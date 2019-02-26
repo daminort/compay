@@ -8,8 +8,9 @@ export const Segment = styled(SegmentSUI)`
 
   &.ui.segment {
     margin: 0;
-    margin-left: 8px;
+    padding-right: 32px;
     border: none;
     box-shadow: none;
+    width: 100%;
   }
 `;

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import classNames from 'classnames';
 import { observer, inject, PropTypes as PropTypesMobX } from 'mobx-react';
 import { withRouter } from 'react-router';
 
@@ -25,13 +26,19 @@ class Root extends Component {
 
   render() {
     const { App } = this.props;
+    const { sidebarCollapsed } = App;
+
+    const contentClassName = classNames({
+      expanded : sidebarCollapsed,
+      normal   : !sidebarCollapsed,
+    });
 
     return (
       <Fragment>
         <Header />
         <SegmentGroup horizontal>
           <Sidebar />
-          <Content>
+          <Content className={contentClassName}>
             <ContentContainer>
               <MainRouter />
             </ContentContainer>

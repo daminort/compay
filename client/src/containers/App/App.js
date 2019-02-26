@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'mobx-react';
 import { Router } from 'react-router';
@@ -21,29 +21,27 @@ import Root from '../Root';
 const browserHistory = createBrowserHistory();
 const history = syncHistoryWithStore(browserHistory, RoutingStore);
 
-class App extends Component {
-  render() {
+const App = () => {
 
-    return (
-      <Provider
-        App={AppStore}
-        Notification={NotificationStore}
-        Routing={RoutingStore}
-        ServicesList={ServicesListStore}
-        ServiceEdit={ServiceEditStore}
-        ScalesList={ScalesListStore}
-        ScaleEdit={ScaleEditStore}
-        RatesList={RatesListStore}
-        RateEdit={RateEditStore}
-        CalculationsList={CalculationsListStore}
-        Settings={SettingsStore}
-      >
-        <Router history={history}>
-          <Root />
-        </Router>
-      </Provider>
-    );
-  }
-}
+  return (
+    <Provider
+      App={AppStore}
+      Notification={NotificationStore}
+      Routing={RoutingStore}
+      ServicesList={ServicesListStore}
+      ServiceEdit={ServiceEditStore}
+      ScalesList={ScalesListStore}
+      ScaleEdit={ScaleEditStore}
+      RatesList={RatesListStore}
+      RateEdit={RateEditStore}
+      CalculationsList={CalculationsListStore}
+      Settings={SettingsStore}
+    >
+      <Router history={history}>
+        <Root />
+      </Router>
+    </Provider>
+  );
+};
 
 export default App;

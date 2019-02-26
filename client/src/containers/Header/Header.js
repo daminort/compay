@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import { observer, inject, PropTypes as PropTypesMobX } from 'mobx-react';
 
 import PageHeader from '../../components/PageHeader';
@@ -12,7 +13,8 @@ import { Wrapper, LogoHolder, HeaderHolder } from './Header.style';
 class Header extends Component {
 
   static propTypes = {
-    Routing: PropTypesMobX.observableObject.isRequired,
+    App     : PropTypesMobX.observableObject.isRequired,
+    Routing : PropTypesMobX.observableObject.isRequired,
   }
 
   constructor(props) {
@@ -76,12 +78,25 @@ class Header extends Component {
   }
 
   render() {
+    const { App } = this.props;
+    const { sidebarCollapsed } = App;
+
     const route = this.detectRoute();
+    const logoClassName = classNames({
+      collapsed : sidebarCollapsed,
+      normal    : !sidebarCollapsed,
+    });
+    const headerClassName = classNames({
+      expanded : sidebarCollapsed,
+      normal   : !sidebarCollapsed,
+    });
 
     return (
       <Wrapper>
-        <LogoHolder><Logo /></LogoHolder>
-        <HeaderHolder>
+        <LogoHolder className={logoClassName}>
+          <Logo />
+        </LogoHolder>
+        <HeaderHolder className={headerClassName}>
           <PageHeader {...route} />
           <LangSwitcher />
         </HeaderHolder>
@@ -90,4 +105,4 @@ class Header extends Component {
   }
 }
 
-export default inject('Routing')(observer(Header));
+export default inject('App', 'Routing')(observer(Header));

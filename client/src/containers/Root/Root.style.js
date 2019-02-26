@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Segment } from 'semantic-ui-react';
 
 import withTheme from '../../themes/withTheme';
-import { headerHeight, footerHeight, sidebarWidth } from '../../themes/config';
+import { headerHeight, footerHeight, sidebarWidth, sidebarCollapsedWidth } from '../../themes/config';
 
 export const SegmentGroup = styled(Segment.Group)`
   &.ui.horizontal.segments {
@@ -17,6 +17,15 @@ export const Content = withTheme(styled.div`
   margin-left: ${sidebarWidth};
   min-height: calc(100vh - ${headerHeight});
   color: ${({ theme }) => theme.text.mainDark};
+
+  &.expanded {
+    width: calc(100vw - ${sidebarCollapsedWidth});
+    margin-left: ${sidebarCollapsedWidth};
+  }
+  &.normal {
+    width: calc(100vw - ${sidebarWidth});
+    margin-left: ${sidebarWidth};
+  }
 `);
 
 export const ContentContainer = withTheme(styled.div`

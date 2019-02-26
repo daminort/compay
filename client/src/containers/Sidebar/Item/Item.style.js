@@ -26,4 +26,10 @@ export const Segment = withTheme(styled.div`
     color: ${({ theme }) => theme.text.mainLight};
     font-weight: bold;
   }
+  &.collapsed {
+    padding: 1.5rem 10px;
+    i.icon {
+      margin: 0px;
+    }
+  }
 `);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Header, Container  } from 'semantic-ui-react';
+import { Header  } from 'semantic-ui-react';
 import { Segment } from './MainContainer.style';
 
 class MainContainer extends Component {
@@ -24,9 +24,9 @@ class MainContainer extends Component {
         {pageHeader && (
           <Header size="large" dividing>{pageHeader}</Header>
         )}
-        <Container>
+        <div>
           {children}
-        </Container>
+        </div>
       </Segment>
     );
   }

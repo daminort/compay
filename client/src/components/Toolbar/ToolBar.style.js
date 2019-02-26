@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import { Container as ContainerSUI } from 'semantic-ui-react';
 import withTheme from '../../themes/withTheme';
 
-export const Container = styled(ContainerSUI)`
-  &.ui.container {
+export const Container = styled.div`
     margin-bottom: 24px;
     display: flex;
     align-items: center;
-  }
 
   .ui.button {
     margin-right: .5em;

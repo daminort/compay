@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import withTheme from '../../themes/withTheme';
-import { headerHeight, sidebarWidth } from '../../themes/config';
+import { headerHeight, sidebarWidth, sidebarCollapsedWidth } from '../../themes/config';
 
 export const Wrapper = withTheme(styled.header`
   position: fixed;
@@ -22,15 +22,29 @@ export const LogoHolder = withTheme(styled.div`
   height: 100%;
   box-sizing: border-box;
   background: ${({ theme }) => theme.bg.logo};
+
+  &.collapsed {
+    width: ${sidebarCollapsedWidth};
+  }
+  &.normal {
+    width: ${sidebarWidth};
+  }
 `);
 
 export const HeaderHolder = withTheme(styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 16px;
+  padding-right: 32px;
   width: calc(100vw - ${sidebarWidth});
   height: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.border.main};
+
+  &.expanded {
+    width: calc(100vw - ${sidebarCollapsedWidth});
+  }
+  &.normal {
+    width: calc(100vw - ${sidebarWidth});
+  }
 `);
