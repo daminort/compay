@@ -1,0 +1,73 @@
+const ERRORS = {
+  // init DB and operations
+  initDB              : 'Initialization DB failed',
+  createService       : 'Creating service failed',
+  createRate          : 'Creating rate failed',
+  createScales        : 'Creating scales failed',
+  createCalcs         : 'Creating calculations failed',
+  removeServices      : 'Removing services failed',
+  removeRates         : 'Removing rates failed',
+  removeScales        : 'Removing scales failed',
+  removeCalcs         : 'Removing calculations failed',
+  removeBackups       : 'Removing backup sessions failed',
+  removeRestores      : 'Removing restore sessions failed',
+  restoreServices     : 'Restoring services failed',
+  restoreRates        : 'Restoring rates failed',
+  restoreScales       : 'Restoring scales failed',
+  restoreCalcs        : 'Restoring calculations failed',
+  // rollback
+  unknownModel        : 'Unknown model name for rollback',
+  rollbackFailed      : 'Rollback failed',
+  // Services
+  serviceNotFound     : 'Service not found',
+  getServicesList     : 'Loading services list failed',
+  getService          : 'Loading service failed',
+  removeService       : 'Removing service failed',
+  restoreService      : 'Restoring service failed',
+  updateService       : 'Updating service failed',
+  validateService     : 'Service validation error',
+  // Rates
+  rateNotFound        : 'Rate not found',
+  getRatesList        : 'Loading rates list failed',
+  getRate             : 'Loading rate failed',
+  getLatestRate       : 'Loading latest rate for service failed',
+  removeRate          : 'Removing rate failed',
+  restoreRate         : 'Restoring rate failed',
+  createRate          : 'Creating rate failed',
+  updateRate          : 'Updating rate failed',
+  validateRate        : 'Rate validation error',
+  // Scales
+  scaleNotFound       : 'Scale not found',
+  getScalesList       : 'Loading scales list failed',
+  getScale            : 'Loading scale failed',
+  removeScale         : 'Removing scale failed',
+  restoreScale        : 'Restoring scale failed',
+  createScale         : 'Creating scale failed',
+  updateScale         : 'Updating scale failed',
+  validateScale       : 'Scale validation error',
+  // Calculations
+  calculationNotFound : 'Calculation not found',
+  getCalculationsList : 'Loading calculations list failed',
+  getCalculation      : 'Loading calculation failed',
+  removeCalculation   : 'Removing calculation failed',
+  restoreCalculation  : 'Restoring calculation failed',
+  createCalculation   : 'Creating calculation failed',
+  updateCalculation   : 'Updating calculation failed',
+  validateCalculation : 'Calculation validation error',
+  // Backup
+  backupDB            : 'Backup DB failed',
+  openBackupSession   : 'Opening backup session failed',
+  backupNotFound      : 'Backup session not found',
+  getBackup           : 'Loading backup data failed',
+  backupUpdate        : 'Updating backup data failed',
+  // Restore
+  restoreDB           : 'Restore DB failed',
+  openRestoreSession  : 'Opening restore session failed',
+  restoreNotFound     : 'Restore session not found',
+  getRestore          : 'Loading restore data failed',
+  restoreUpdate       : 'Updating restore data failed',
+};
+
+module.exports = {
+  ERRORS,
+};
