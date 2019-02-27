@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import withTheme from '../../themes/withTheme';
-import { headerHeight, sidebarWidth, sidebarCollapsedWidth } from '../../themes/config';
+import {
+  headerHeight,
+  sidebarWidth,
+  sidebarCollapsedWidth,
+  sidebarTransition,
+} from '../../themes/config';
 
 export const Wrapper = withTheme(styled.div`
   position: fixed;
@@ -12,6 +17,7 @@ export const Wrapper = withTheme(styled.div`
   height: calc(100vh - ${headerHeight});
   background: ${({ theme }) => theme.bg.sidebar};
   color: ${({ theme }) => theme.text.secondaryLight};
+  transition: ${sidebarTransition};
 
   &.collapsed {
     width: ${sidebarCollapsedWidth};

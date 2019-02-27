@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import withTheme from '../../themes/withTheme';
-import { headerHeight, sidebarWidth, sidebarCollapsedWidth } from '../../themes/config';
+import {
+  headerHeight,
+  sidebarWidth,
+  sidebarCollapsedWidth,
+  sidebarTransition,
+} from '../../themes/config';
 
 export const Wrapper = withTheme(styled.header`
   position: fixed;
@@ -22,6 +27,7 @@ export const LogoHolder = withTheme(styled.div`
   height: 100%;
   box-sizing: border-box;
   background: ${({ theme }) => theme.bg.logo};
+  transition: ${sidebarTransition};
 
   &.collapsed {
     width: ${sidebarCollapsedWidth};
@@ -40,6 +46,7 @@ export const HeaderHolder = withTheme(styled.div`
   height: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.border.main};
+  transition: ${sidebarTransition};
 
   &.expanded {
     width: calc(100vw - ${sidebarCollapsedWidth});

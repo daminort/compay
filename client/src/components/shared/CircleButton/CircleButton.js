@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'semantic-ui-react';
+
+import { Edit, Cancel, Undo } from '../../svgIcons';
 import { Button } from './CircleButton.style';
+
+const icons = {
+  edit     : <Edit size={16} />,
+  cancel   : <Cancel size={16} />,
+  undo     : <Undo size={16} />,
+};
 
 class CircleButton extends Component {
 
   static propTypes = {
-    iconName : PropTypes.string.isRequired,
-    title    : PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+    icon     : PropTypes.oneOf(['edit', 'cancel', 'undo']).isRequired,
+    title    : PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     size     : PropTypes.oneOf(['small', 'medium', 'large']),
   }
 
   static defaultProps = {
-    size: 'small',
+    size     : 'small',
+    title    : '',
   }
 
   render() {
-    const { iconName, title, size, className, ...restProps } = this.props;
+    const { icon, title, size, className, ...restProps } = this.props;
     const defClassName = className ? `${size} ${className}` : size;
 
     return (
       <Popup
         trigger={(
-          <Button
-            circular
-            className={defClassName}
-            icon={iconName}
-            {...restProps}
-          />
+          <Button className={defClassName} {...restProps}>
+            {icons[icon]}
+          </Button>
         )}
         content={title}
       />
@@ -36,5 +42,3 @@ class CircleButton extends Component {
 }
 
 export default CircleButton;
-
-//<Popup trigger={<Button icon='add' />} content='Add users to your feed' />

@@ -47,7 +47,6 @@ class RatesListPage extends Component {
       { dataIndex: 'startDate', title: lang.startDate, render: this.renderCell },
       { dataIndex: 'method', title: lang.method, render: this.renderCell },
       { dataIndex: 'rate', title: lang.rate, render: this.renderCell },
-      { dataIndex: 'info', title: lang.info, render: this.renderCell },
       { dataIndex: 'actions', title: lang.actions, width: 1, render: this.renderCell },
     ];
   }
@@ -103,15 +102,16 @@ class RatesListPage extends Component {
 
       case 'method': {
         const methodNameID = CALCULATION_METHOD[record.methodID];
-        return (<Intl id={methodNameID} />);
-      }
-
-      case 'info': {
         return (
-          <RateInfo
-            methodID={record.methodID}
-            rateData={record}
-          />
+          <div className="method">
+            <Intl id={methodNameID} />
+            <div className="icon">
+              <RateInfo
+                methodID={record.methodID}
+                rateData={record}
+              />
+            </div>
+          </div>
         );
       }
 

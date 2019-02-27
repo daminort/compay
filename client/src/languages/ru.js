@@ -45,6 +45,9 @@ const messages = {
   'common.download'        : 'Скачать',
   'common.clearDB'         : 'Очистка БД',
   'common.selectFile'      : 'Выберите файл...',
+  'common.areYouSure'      : 'Вы уверены?',
+  'common.yes'             : 'Да',
+  'common.no'              : 'Нет',
 
   // Sidebar ------------------------------------------------------------------
   'sidebar.dahboard'     : 'Сводка',

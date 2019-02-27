@@ -1,21 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Popup, Icon } from 'semantic-ui-react';
+import { Popup } from 'semantic-ui-react';
 
 import Formatter from '../../../helpers/Formatter';
+import withTheme from '../../../themes/withTheme';
 import { maxCounterValue } from '../../../config';
 import { CALCULATION_METHOD } from '../../../constants/calculationMethods';
+import { Info as InfoIcon } from '../../svgIcons';
 
 import { titles, infos } from './lang';
 import { Wrapper, Title, Info, IconHolder, DetailsHolder } from './RateInfo.style';
-
-const iconName = 'question circle outline';
 
 class RateInfo extends Component {
 
   static propTypes = {
     methodID: PropTypes.number.isRequired,
     rateData: PropTypes.object.isRequired,
+    theme   : PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -80,12 +81,22 @@ class RateInfo extends Component {
   }
 
   render() {
+    const { theme } = this.props;
+
     const popupContent = this.renderContent();
+    const trigger = (
+      <IconHolder>
+        <InfoIcon
+          size={18}
+          color={theme.common.info}
+        />
+      </IconHolder>
+    );
 
     return (
       <Popup
         wide
-        trigger={<IconHolder><Icon name={iconName} /></IconHolder>}
+        trigger={trigger}
         content={popupContent}
         on="hover"
       />
@@ -93,4 +104,4 @@ class RateInfo extends Component {
   }
 }
 
-export default RateInfo;
+export default withTheme(RateInfo);

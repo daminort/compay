@@ -11,7 +11,7 @@ class AppStore {
 		this.themeName   = THEMES.default;
 		this.locale      = restoreValue('locale') || defaultLocale;
 		this.loading     = false;
-		this.sdCollapsed = true;//restoreValue('sdCollapsed') || false;
+		this.sdCollapsed = restoreValue('sdCollapsed') || false;
 	}
 
 	get theme() {

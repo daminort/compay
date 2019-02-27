@@ -45,6 +45,9 @@ const messages = {
   'common.download'        : 'Download',
   'common.clearDB'         : 'Clearing DB',
   'common.selectFile'      : 'Select file...',
+  'common.areYouSure'      : 'Are you sure?',
+  'common.yes'             : 'Yes',
+  'common.no'              : 'No',
 
   // Sidebar ------------------------------------------------------------------
   'sidebar.dahboard'     : 'Dashboard',

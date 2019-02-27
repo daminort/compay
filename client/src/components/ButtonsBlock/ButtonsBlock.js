@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Confirm } from 'semantic-ui-react';
-
 import CircleButton from '../shared/CircleButton';
+import RemoveConfirm from '../popups/RemoveConfirm';
 import { Wrapper } from './ButtonsBlock.styled';
 
 class ButtonsBlock extends Component {
@@ -46,18 +45,12 @@ class ButtonsBlock extends Component {
   constructor(props) {
     super(props);
     this.onClickEdit           = this.onClickEdit.bind(this);
-    this.onClickRemove         = this.onClickRemove.bind(this);
     this.onClickRestore        = this.onClickRestore.bind(this);
-    this.onConfirmRemoveCancel = this.onConfirmRemoveCancel.bind(this);
     this.onConfirmRemove       = this.onConfirmRemove.bind(this);
-
-    this.state = {
-      removeConfirmOpen: false,
-    };
+    this.renderRemove          = this.renderRemove.bind(this);
   }
 
   // Events -------------------------------------------------------------------
-
   onClickEdit(event) {
     const { id, onEdit } = this.props;
     if (!onEdit) {
@@ -67,10 +60,6 @@ class ButtonsBlock extends Component {
     onEdit(id, event);
   }
 
-  onClickRemove() {
-    this.setState({ removeConfirmOpen: true });
-  }
-
   onClickRestore(event) {
     const { id, onRestore } = this.props;
     if (!onRestore) {
@@ -78,10 +67,6 @@ class ButtonsBlock extends Component {
     }
 
     onRestore(id, event);
-  }
-
-  onConfirmRemoveCancel() {
-    this.setState({ removeConfirmOpen: false });
   }
 
   onConfirmRemove() {
@@ -94,6 +79,35 @@ class ButtonsBlock extends Component {
   }
 
   // Renders ------------------------------------------------------------------
+  renderRemove() {
+    const { id, useConfirm, removeTitle, buttonSize, disabled } = this.props;
+    if (!useConfirm) {
+      return (
+        <CircleButton
+          icon="cancel"
+          title={removeTitle}
+          size={buttonSize}
+          disabled={disabled}
+          onClick={this.onConfirmRemove}
+        />
+      );
+    }
+
+    return (
+      <RemoveConfirm
+        id={id}
+        onConfirm={this.onConfirmRemove}
+        trigger={(
+          <CircleButton
+            icon="cancel"
+            title={removeTitle}
+            size={buttonSize}
+            disabled={disabled}
+          />
+        )}
+      />
+    );
+  }
 
   render() {
     const {
@@ -101,21 +115,18 @@ class ButtonsBlock extends Component {
       remove,
       restore,
       editTitle,
-      removeTitle,
       restoreTitle,
       align,
       buttonSize,
       disabled,
       visibleOnHover,
-      useConfirm,
     } = this.props;
-    const { removeConfirmOpen } = this.state;
 
     return (
       <Wrapper align={align} visibleOnHover={visibleOnHover} className="buttons-block">
         {edit && (
           <CircleButton
-            iconName="edit"
+            icon="edit"
             title={editTitle}
             size={buttonSize}
             disabled={disabled}
@@ -124,28 +135,14 @@ class ButtonsBlock extends Component {
         )}
         {restore && (
           <CircleButton
-            iconName="undo"
+            icon="undo"
             title={restoreTitle}
             size={buttonSize}
             disabled={disabled}
             onClick={this.onClickRestore}
           />
         )}
-        {remove && (
-          <CircleButton
-            iconName="delete"
-            title={removeTitle}
-            size={buttonSize}
-            disabled={disabled}
-            onClick={useConfirm ? this.onClickRemove : this.onConfirmRemove}
-          />
-        )}
-
-        <Confirm
-          open={removeConfirmOpen}
-          onCancel={this.onConfirmRemoveCancel}
-          onConfirm={this.onConfirmRemove}
-        />
+        {remove && this.renderRemove()}
       </Wrapper>
     );
   }
